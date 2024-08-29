@@ -53,6 +53,7 @@ return require('packer').startup(function(use)
 
    -- 优化nvim通知
    use 'folke/noice.nvim'
+   use 'rcarriga/nvim-notify'
 
    -- notice依赖
    use 'MunifTanjim/nui.nvim'
@@ -121,5 +122,40 @@ return require('packer').startup(function(use)
 
    -- 快速编辑多行
    use "mg979/vim-visual-multi"
+   
+   -- trouble
+   use "folke/trouble.nvim"
+
+   -- 为nvim添加项目功能
+   use {
+      "ahmedkhalf/project.nvim",
+      config = function()
+         require("project_nvim").setup()
+      end
+   }
+
+   -- debug
+   use 'mfussenegger/nvim-dap'
+
+   -- flash
+   use "folke/flash.nvim"
+
+   -- 图一乐
+   use 'eandrju/cellular-automaton.nvim'
+
+   -- 直接运行代码
+   use { 'michaelb/sniprun', run = 'sh ./install.sh'}
+
+   -- 更好的git视图
+   use "sindrets/diffview.nvim"
+
+   -- 刷题
+   use {
+   	'xeluxee/competitest.nvim',
+	   requires = 'MunifTanjim/nui.nvim',
+	   config = function() 
+         require('competitest').setup() 
+      end
+   }
 
 end)
