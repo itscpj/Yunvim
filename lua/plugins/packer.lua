@@ -6,7 +6,7 @@ return require('packer').startup(function(use)
    use "wbthomason/packer.nvim"
 
    -- Neovim主题
-   use "folke/tokyonight.nvim"
+   use { "catppuccin/nvim", as = "catppuccin" }
 
    -- 状态栏
    use "nvim-lualine/lualine.nvim"
@@ -35,7 +35,10 @@ return require('packer').startup(function(use)
    -- tab栏
    use "akinsho/bufferline.nvim"
 
-   -- 左侧git提示
+   -- 始终显示buffer中的内容
+   use "tiagovla/scope.nvim"
+
+   --use("tiagovla/scope.nvim" 左侧git提示
    use "lewis6991/gitsigns.nvim"
 
    -- 文件检索
@@ -45,6 +48,9 @@ return require('packer').startup(function(use)
 
    -- telescope依赖
    use 'nvim-lua/plenary.nvim'
+
+   -- 给telescope增加fzf
+   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
    -- 内置终端
    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
@@ -157,5 +163,16 @@ return require('packer').startup(function(use)
          require('competitest').setup() 
       end
    }
+
+   -- 高亮显示当前窗口
+   use {
+      "nvim-zh/colorful-winsep.nvim",
+       config = function ()
+           require('colorful-winsep').setup()
+      end
+   }
+
+   -- 缩进显示
+   use "lukas-reineke/indent-blankline.nvim"
 
 end)

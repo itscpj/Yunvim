@@ -1,9 +1,8 @@
-require("plugins.plugins-setup")
+require("plugins.packer")
 require("core.options")
 require("core.keymap")
 
 -- 插件
-
 require("plugins.lualine")
 require("plugins.nvimtree")
 require("plugins.bufferline")
@@ -19,6 +18,7 @@ require("plugins.mason")
 require("plugins.aerial")
 require("plugins.cmdline")
 require("plugins.notice")
+require("plugins.indentblankline")
 
 -- nvim-tree
 vim.g.loaded_netrw = 1
@@ -41,5 +41,4 @@ vim.cmd([[
     autocmd VimLeavePre * lua require("persistence").save()
   augroup END
 ]])
-
 

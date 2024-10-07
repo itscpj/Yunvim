@@ -31,11 +31,15 @@ opt.ignorecase = true
 
 -- 外观
 opt.termguicolors = true
-vim.cmd[[colorscheme tokyonight-moon]]
+-- 获取当前时间
+local hour = tonumber(os.date('%H'))
+local minute = tonumber(os.date('%M'))
 
-
-
-
-
-
-
+-- 根据时间选择主题
+if (hour > 7 and hour < 17) or (hour == 17 and minute <= 30) then
+    -- 早上8点到下午5点半之间使用latte主题
+    vim.cmd[[colorscheme catppuccin-latte]]
+else
+    -- 其他时间使用mocha主题
+    vim.cmd[[colorscheme catppuccin-mocha]]
+end
