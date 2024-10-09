@@ -42,3 +42,14 @@ vim.cmd([[
   augroup END
 ]])
 
+-- 阻止indentblankline插件在LICENSE中工作
+-- 使用 vim.api.nvim_create_autocmd 创建自动命令
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+    -- 指定模式匹配的文件名
+    pattern = "LICENSE",
+    -- 定义当触发自动命令时要执行的回调函数
+    callback = function()
+        -- 设置文件类型为 LICENSE
+        vim.bo.filetype = "LICENSE"
+    end,
+})

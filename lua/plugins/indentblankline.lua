@@ -22,8 +22,8 @@ hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
 end)
 
 require("ibl").setup { 
-  exclude = {
-   filetypes = { "dashboard" }, -- 排除在dashboard上高亮缩进
-  },
+   exclude = {
+      filetypes = { "dashboard", "LICENSE" }, -- 排除在dashboard上高亮缩进
+   },
    indent = { highlight = highlight } 
 }

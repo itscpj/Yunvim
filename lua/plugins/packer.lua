@@ -164,14 +164,6 @@ return require('packer').startup(function(use)
       end
    }
 
-   -- 高亮显示当前窗口
-   use {
-      "nvim-zh/colorful-winsep.nvim",
-       config = function ()
-           require('colorful-winsep').setup()
-      end
-   }
-
    -- 缩进显示
    use "lukas-reineke/indent-blankline.nvim"
 
