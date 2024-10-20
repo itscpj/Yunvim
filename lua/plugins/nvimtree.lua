@@ -1,11 +1,15 @@
--- 自定义快捷键
+-- nvim-tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- Customize Shortcuts
 local kmp = vim.keymap
 kmp.set("n", "<leader>e", ":NvimTreeToggle<CR>")
 
 require("nvim-tree").setup({
   sort = {
     sorter = "case_sensitive",
-  }, -- 使用大小写敏感的排序方式
+  }, 
   view = {
     width = 30,
   },
@@ -16,14 +20,14 @@ require("nvim-tree").setup({
     highlight_opened_files = "all", -- 高亮
   }, -- 当目录为空时，仍然显示目录项
   filters = {
-    dotfiles = true,
+    dotfiles = false,
   }, -- 显示隐藏文件
   git = {
      enable = true, -- 启用git支持
   },
 })
 
--- nvimtree自动关闭
+-- nvim-tree auto close
 vim.api.nvim_create_autocmd("QuitPre", {
   callback = function()
     local invalid_win = {}

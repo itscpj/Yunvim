@@ -10,8 +10,8 @@ vim.api.nvim_set_keymap('n', '<leader>7', ':BufferLineGoToBuffer 7<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>8', ':BufferLineGoToBuffer 8<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>9', ':BufferLineGoToBuffer 9<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>$', ':BufferLineGoToBuffer -1<CR>', opts) -- 直接跳转到最后一个
-vim.api.nvim_set_keymap('n', '<Tab>', ':bnext<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<S-Tab>', ':bprevious<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Tab>', ':bnext<CR>', opts)
+vim.api.nvim_set_keymap('n', '<S-Tab>', ':bprevious<CR>', opts)
 -- vim.api.nvim_set_keymap('n', '<C-w>', ':lua close_and_next_buffer()<CR>', { noremap = true, silent = true })
 
 require("bufferline").setup {

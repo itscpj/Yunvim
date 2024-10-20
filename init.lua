@@ -1,8 +1,9 @@
-require("plugins.packer")
-require("core.options")
-require("core.keymap")
+-- Load settings
+require("config.lazy")
+require("config.options")
+require("config.keymap")
 
--- 插件
+-- Load plugins 
 require("plugins.lualine")
 require("plugins.nvimtree")
 require("plugins.bufferline")
@@ -17,39 +18,34 @@ require("plugins.nvimcmp")
 require("plugins.mason")
 require("plugins.aerial")
 require("plugins.cmdline")
-require("plugins.notice")
 require("plugins.indentblankline")
+require("plugins.persistence")
+require("plugins.todocomment")
+require("plugins.project") --TODO config
+require("plugins.noice")
+require("plugins.automaton")
+require("plugins.diffview") -- TODO config
+require("plugins.lazygit") --TODO config
+require("plugins.lspconfig") -- TODO config
+require("plugins.luasnip")
+require("plugins.lspsignature")
+require("plugins.lspkind")
 
--- nvim-tree
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
--- 启动时间
+-- Start time 
 vim.g.start_time = vim.fn.reltime()
-
--- 确保nvim-cmp被第一时间加载
--- 这里如果要用需要把所有的插件全部写进来
---require('packer').startup(function(use)
---    use 'hrsh7th/nvim-cmp'
-    -- 添加你的其他插件
---end)
 
 -- Restore Session
 vim.cmd([[
-  augroup persistence_save
-    autocmd!
-    autocmd VimLeavePre * lua require("persistence").save()
-  augroup END
+   augroup persistence_save
+      autocmd!
+      autocmd VimLeavePre * lua require("persistence").save()
+   augroup END
 ]])
 
--- 阻止indentblankline插件在LICENSE中工作
--- 使用 vim.api.nvim_create_autocmd 创建自动命令
+-- Prevent indentblankline.nvim from working in LICENSE
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-    -- 指定模式匹配的文件名
     pattern = "LICENSE",
-    -- 定义当触发自动命令时要执行的回调函数
     callback = function()
-        -- 设置文件类型为 LICENSE
         vim.bo.filetype = "LICENSE"
     end,
 })
