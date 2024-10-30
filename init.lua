@@ -21,7 +21,7 @@ require("plugins.cmdline")
 require("plugins.indentblankline")
 require("plugins.persistence")
 require("plugins.todocomment")
-require("plugins.project") --TODO config
+require("plugins.project") 
 require("plugins.noice")
 require("plugins.automaton")
 require("plugins.diffview") -- TODO config
