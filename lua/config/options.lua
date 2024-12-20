@@ -1,8 +1,5 @@
 local opt = vim.opt
 
--- 默认启动时不打开nvimtree
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
 -- 行号
 opt.number=true
 

@@ -30,13 +30,6 @@ require("bufferline").setup {
         indicator = {
            style = 'icon',
         },
-        -- 左侧让出 nvim-tree的位置
-        offsets = {{
-            filetype = "NvimTree",
-            text = "File Explorer",
-            highlight = "Directory",
-            text_align = "left"
-        }},
         color_icons = true,
         show_buffer_icons = true,
         show_tab_indicators = true,

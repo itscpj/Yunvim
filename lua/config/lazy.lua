@@ -66,17 +66,39 @@ require("lazy").setup({
           dependencies = { 'nvim-tree/nvim-web-devicons' }
       },
 
-      -- Nvim-tree
+      -- file browser
       {
-         "nvim-tree/nvim-tree.lua",
-         version = "*",
-         lazy = false,
-         dependencies = {
-            "nvim-tree/nvim-web-devicons",
+         "mikavilpas/yazi.nvim",
+         event = "VeryLazy",
+         keys = {
+            -- 👇 in this section, choose your own keymappings!
+            {
+               "<leader>-",
+               "<cmd>Yazi<cr>",
+               desc = "Open yazi at the current file",
+            },
+            {
+               -- Open in the current working directory
+               "<leader>cw",
+               "<cmd>Yazi cwd<cr>",
+               desc = "Open the file manager in nvim's working directory" ,
+            },
+            {
+               -- NOTE: this requires a version of yazi that includes
+               -- https://github.com/sxyazi/yazi/pull/1305 from 2024-07-18
+               '<c-up>',
+               "<cmd>Yazi toggle<cr>",
+               desc = "Resume the last yazi session",
+            },
          },
-         config = function()
-            require("nvim-tree").setup {}
-         end,
+         ---@type YaziConfig
+         opts = {
+            -- if you want to open yazi instead of netrw, see below for more info
+            open_for_directories = false,
+            keymaps = {
+            show_help = '<f1>',
+            },
+         },
       },
 
       -- Catppuccin Theme
@@ -103,23 +125,25 @@ require("lazy").setup({
 
       -- Switch windows
       {
-         "christoomey/vim-tmux-navigator",
-         cmd = {
-            "TmuxNavigateLeft",
-            "TmuxNavigateDown",
-            "TmuxNavigateUp",
-            "TmuxNavigateRight",
-            "TmuxNavigatePrevious",
-         },
+         "https://git.sr.ht/~swaits/zellij-nav.nvim",
+         lazy = true,
+         event = "VeryLazy",
          keys = {
-            { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-            { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-            { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-            { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
-            { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+            { "<c-h>", "<cmd>ZellijNavigateLeftTab<cr>",  { silent = true, desc = "navigate left or tab"  } },
+            { "<c-j>", "<cmd>ZellijNavigateDown<cr>",  { silent = true, desc = "navigate down"  } },
+            { "<c-k>", "<cmd>ZellijNavigateUp<cr>",    { silent = true, desc = "navigate up"    } },
+            { "<c-l>", "<cmd>ZellijNavigateRightTab<cr>", { silent = true, desc = "navigate right or tab" } },
          },
+         opts = {},
       },
-      
+
+      {
+         "hiasr/vim-zellij-navigator.nvim",
+         config = function()
+            require('vim-zellij-navigator').setup()
+         end
+      },
+
       -- Autopair
       {
          'windwp/nvim-autopairs',
@@ -359,6 +383,13 @@ require("lazy").setup({
          "hrsh7th/cmp-path",
          "hrsh7th/nvim-cmp"
       },
+
+      -- AI code copilot
+      {
+         'Exafunction/codeium.vim',
+         event = 'BufEnter'
+      },
+
    },
    -- Configure any other settings here. See the documentation for more details.
    -- colorscheme that will be used when installing plugins.

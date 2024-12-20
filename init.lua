@@ -5,7 +5,6 @@ require("config.keymap")
 
 -- Load plugins 
 require("plugins.lualine")
-require("plugins.nvimtree")
 require("plugins.bufferline")
 require("plugins.gitsigns")
 require("plugins.telescope")
@@ -30,6 +29,7 @@ require("plugins.lspconfig") -- TODO config
 require("plugins.luasnip")
 require("plugins.lspsignature")
 require("plugins.lspkind")
+require("plugins.codeium")
 
 -- Start time 
 vim.g.start_time = vim.fn.reltime()
